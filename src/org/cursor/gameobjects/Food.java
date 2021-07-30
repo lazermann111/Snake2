@@ -1,7 +1,5 @@
 package org.cursor.gameobjects;
 
-import org.cursor.ObjectOnScreen;
-
 public class Food extends ObjectOnScreen {
     int growthFactor;
 

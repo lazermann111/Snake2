@@ -1,7 +1,9 @@
 package org.cursor;
 
+import org.cursor.gameobjects.ObjectOnScreen;
+
 public class GameScreen {
-    int screenSize = 20;
+    int screenSize = 10;
     char emptyCell = '*';
     char[][] screen = new char[screenSize][screenSize];
 
@@ -14,6 +16,7 @@ public class GameScreen {
             }
         }
     }
+
     //2
     void printScreen() {
         for (int i = 0; i < screenSize; i++) {
@@ -24,8 +27,13 @@ public class GameScreen {
             System.out.println();
         }
     }
+
     //3
     public void setObjectOnScreen(ObjectOnScreen o) {
         screen[o.x][o.y] = o.printableCharacter;
     }
+//
+//    public boolean is2ObjectsIntersecting(ObjectOnScreen o1, ObjectOnScreen o2) {
+//        return o1.x == o2.x && o1.y == o2.y;
+//    }
 }
