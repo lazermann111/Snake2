@@ -6,10 +6,15 @@ package org.cursor.gameobjects;
 //Bycicle extend Vehicle
 //Car extend Vehicle
 
+import java.util.List;
+
 public class Snake extends ObjectOnScreen {
     int currentLength;
     float speed;
 
+    //todo add tail
+
+    List<ObjectOnScreen> tail;
     public Snake(int x, int y) {
         super(x, y, '@');
     }
@@ -23,6 +28,5 @@ public class Snake extends ObjectOnScreen {
         else if (collision instanceof Food) {
             System.out.println("Level Up!");
         }
-
     }
 }

@@ -10,10 +10,10 @@ import java.util.Scanner;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class GameController {
-    Snake snake;
-    List<ObjectOnScreen> gameObjects;
-    GameScreen gameScreen;
-    Scanner scanner = new Scanner(System.in);
+    private Snake snake;
+    private List<ObjectOnScreen> gameObjects;
+    private GameScreen gameScreen;
+    private Scanner scanner = new Scanner(System.in);
 
     private void init() {
         snake = new Snake(1, 3);
@@ -42,11 +42,34 @@ public class GameController {
     }
 
     private void updateGameState() {
+
         for (ObjectOnScreen obj : gameObjects) {
             if (snake.intersectsWith(obj)) {
                 System.out.println("Collide!");
                 snake.collideWith(obj);
                 gameObjects.remove(obj);
+                generateFood();
+            }
+        }
+
+    }
+
+    private void generateFood() {
+        boolean newFoodGenerated = false;
+        int counter = 0;
+        while (!newFoodGenerated && counter < 3) {
+            counter++;
+            int newX = (int) (Math.random() * gameScreen.screenSize);
+            int newY = (int) (Math.random() * gameScreen.screenSize);
+            boolean interstectionFound = false;
+            for (ObjectOnScreen coll : gameObjects) {
+                if (coll.intersectsWith(newX, newY) || snake.intersectsWith(newX, newY)) {
+                    interstectionFound = true;
+                }
+            }
+            if (!interstectionFound) {
+                gameObjects.add(new Food(newX, newY));
+                newFoodGenerated = true;
             }
         }
     }

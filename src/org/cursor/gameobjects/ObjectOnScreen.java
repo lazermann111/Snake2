@@ -10,7 +10,11 @@ public abstract class ObjectOnScreen {
         this.printableCharacter = printableCharacter;
     }
 
-   public boolean intersectsWith(ObjectOnScreen other) {
+    public boolean intersectsWith(ObjectOnScreen other) {
         return this.x == other.x && this.y == other.y;
+    }
+
+    public boolean intersectsWith(int x, int y) {
+        return this.x == x && this.y == y;
     }
 }

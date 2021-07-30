@@ -32,8 +32,4 @@ public class GameScreen {
     public void setObjectOnScreen(ObjectOnScreen o) {
         screen[o.x][o.y] = o.printableCharacter;
     }
-//
-//    public boolean is2ObjectsIntersecting(ObjectOnScreen o1, ObjectOnScreen o2) {
-//        return o1.x == o2.x && o1.y == o2.y;
-//    }
 }
